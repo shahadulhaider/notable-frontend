@@ -7,7 +7,6 @@ function MyNotes() {
 
   return (
     <div>
-      <h1>Notable</h1>
       <p>These are my notes</p>
     </div>
   );
