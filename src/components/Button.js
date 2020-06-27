@@ -14,7 +14,7 @@ const Button = styled.button`
     opacity: 0.8;
   }
 
-  .active {
+  :active {
     background-color: #005fa3;
   }
 `;
