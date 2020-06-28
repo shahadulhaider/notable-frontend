@@ -5,12 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 
 import logo from '../img/logo.svg';
 import ButtonLink from './ButtonLink';
-
-const IS_LOGGED_IN = gql`
-  {
-    isLoggedIn @client
-  }
-`;
+import IS_LOGGED_IN from '../gql/query';
 
 const HeaderBar = styled.header`
   width: 100%;

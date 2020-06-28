@@ -26,8 +26,8 @@ const NavList = styled.ul`
 
   a {
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1em;
+    // font-weight: bold;
+    // font-size: 1.1em;
     color: #333;
   }
 
@@ -67,6 +67,14 @@ function Navigation() {
               ✨
             </span>
             Favorites
+          </Link>
+        </li>
+        <li>
+          <Link to='/new'>
+            <span aria-hidden='true' role='img'>
+              ➕
+            </span>
+            New
           </Link>
         </li>
       </NavList>

@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import { useMutation, gql, useApolloClient } from '@apollo/client';
-import UserForm from '../components/UserForm';
+import { useMutation, useApolloClient } from '@apollo/client';
 
-const SIGNIN_USER = gql`
-  mutation signin($email: String!, $password: String!) {
-    signin(email: $email, password: $password)
-  }
-`;
+import UserForm from '../components/UserForm';
+import { SIGNIN_USER } from '../gql/mutation';
+import { IS_LOGGED_IN } from '../gql/query';
 
 const SignIn = (props) => {
   useEffect(() => {
@@ -18,11 +15,7 @@ const SignIn = (props) => {
     onCompleted: (data) => {
       localStorage.setItem('token', data.signin);
       client.writeQuery({
-        query: gql`
-          {
-            isLoggedIn @client
-          }
-        `,
+        query: IS_LOGGED_IN,
         data: { isLoggedIn: true },
       });
       props.history.push('/');
