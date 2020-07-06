@@ -10,7 +10,7 @@ const NewNote = (props) => {
     document.title = 'New Note - Notable';
   });
 
-  const { loading, error, data } = useMutation(NEW_NOTE, {
+  const [newNote, { loading, error }] = useMutation(NEW_NOTE, {
     refetchQueries: [{ query: GET_MY_NOTES }, { query: GET_NOTES }],
     onCompleted: (data) => {
       props.history.push(`/note/${data.newNote.id}`);
@@ -21,7 +21,7 @@ const NewNote = (props) => {
     <React.Fragment>
       {loading && <p>Loading...</p>}
       {error && <p>Error saving the note</p>}
-      <NoteForm action={data} />
+      <NoteForm action={newNote} />
     </React.Fragment>
   );
 };

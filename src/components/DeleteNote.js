@@ -12,12 +12,12 @@ const DeleteNote = (props) => {
       id: props.noteId,
     },
     refetchQueries: [{ query: GET_MY_NOTES, GET_NOTES }],
-    onCompleted: (data) => {
+    onCompleted: () => {
       props.history.push('/mynotes');
     },
   });
 
-  return <ButtonLink onClick={deleteNote}>DeleteNote</ButtonLink>;
+  return <ButtonLink onClick={deleteNote}>Delete Note</ButtonLink>;
 };
 
 export default withRouter(DeleteNote);

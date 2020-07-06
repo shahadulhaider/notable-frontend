@@ -5,12 +5,13 @@ import {
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
+  gql,
 } from '@apollo/client';
 import { setContext } from '@apollo/link-context';
 
 import Pages from './pages';
 import GlobalStyle from './components/GlobalStyle';
-import { IS_LOGGED_IN } from './gql/query';
+// import { IS_LOGGED_IN } from './gql/query';
 
 const uri = process.env.API_URI;
 const httpLink = createHttpLink({ uri });
@@ -42,14 +43,22 @@ const data = {
 
 // write cache data on intial load
 cache.writeQuery({
-  query: IS_LOGGED_IN,
+  query: gql`
+    {
+      isLoggedIn @client
+    }
+  `,
   data,
 });
 
 // write cache data after reset
 client.onResetStore(() =>
   cache.writeQuery({
-    query: IS_LOGGED_IN,
+    query: gql`
+      {
+        isLoggedIn @client
+      }
+    `,
     data,
   }),
 );

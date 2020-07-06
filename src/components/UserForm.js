@@ -23,6 +23,11 @@ const Form = styled.form`
     padding-left: 0.7em;
     margin-bottom: 1em;
   }
+
+  p {
+    margin-top: 3em;
+    text-align: center;
+  }
 `;
 
 const UserForm = (props) => {
@@ -79,12 +84,17 @@ const UserForm = (props) => {
           placeholder='Password'
           onChange={onChange}
         />
-        {props.formType === 'singup' ? (
-          <Button type='submit'>Sign Up</Button>
+        {props.formType === 'signup' ? (
+          <React.Fragment>
+            <p>
+              Already have an account? <Link to={'/signin'}>Sign In</Link>
+            </p>
+            <Button type='submit'>Sign Up</Button>
+          </React.Fragment>
         ) : (
           <React.Fragment>
             <p>
-              Don't Have an Account? <Link to={'/signup'}>Create one</Link>
+              Don&apos;t have an account? <Link to={'/signup'}>Create one</Link>
             </p>
             <Button type='submit'>Sign In</Button>
           </React.Fragment>

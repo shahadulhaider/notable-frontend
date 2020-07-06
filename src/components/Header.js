@@ -5,7 +5,7 @@ import { useQuery, gql } from '@apollo/client';
 
 import logo from '../img/logo.svg';
 import ButtonLink from './ButtonLink';
-import IS_LOGGED_IN from '../gql/query';
+import { IS_LOGGED_IN } from '../gql/query';
 
 const HeaderBar = styled.header`
   width: 100%;
@@ -31,7 +31,7 @@ const UserState = styled.div`
 
 const Header = (props) => {
   const { data, client } = useQuery(IS_LOGGED_IN);
-
+  console.log(data);
   return (
     <HeaderBar>
       <img src={logo} alt='Notable Logo' height='40' />
@@ -43,11 +43,7 @@ const Header = (props) => {
               localStorage.removeItem('token');
               client.resetStore();
               client.writeQuery({
-                query: gql`
-                  {
-                    isLoggedIn @client
-                  }
-                `,
+                query: IS_LOGGED_IN,
                 data: { isLoggedIn: false },
               });
               props.history.push('/');

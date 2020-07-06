@@ -13,13 +13,13 @@ const Form = styled.form`
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 90%;
+  height: 70%;
 `;
 
 const NoteForm = (props) => {
   const [value, setValue] = useState({ content: props.content || '' });
 
-  const onChane = (event) => {
+  const onChange = (event) => {
     setValue({
       ...value,
       [event.target.name]: event.target.value,
@@ -30,7 +30,7 @@ const NoteForm = (props) => {
     <Wrapper>
       <Form
         onSubmit={(event) => {
-          event.prevetDefault();
+          event.preventDefault();
           props.action({
             variables: {
               ...value,
@@ -43,7 +43,7 @@ const NoteForm = (props) => {
           name='content'
           placeholder='Note Content'
           value={value.content}
-          onChange={onChane}
+          onChange={onChange}
         />
         <Button type='submit'>Save</Button>
       </Form>

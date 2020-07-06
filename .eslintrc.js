@@ -19,11 +19,24 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier', 'jsx-a11y', 'eslint-plugin-cypress'],
+  plugins: [
+    'react',
+    'react-hooks',
+    'prettier',
+    'jsx-a11y',
+    'eslint-plugin-cypress',
+  ],
   rules: {
-    'no-console': 'off',
+    'no-console': 'warn',
     'no-unused-vars': 'error',
+    'react/prop-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+  },
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
   },
 };

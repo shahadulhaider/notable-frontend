@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
+import Button from '../components/Button';
+
 const Nav = styled.nav`
   padding: 1em;
-  background-color: #f5f4f0;
+  background-color: #fafad2;
 
   @media (max-width: 700px) {
     padding-top: 64px;
@@ -13,8 +15,7 @@ const Nav = styled.nav`
   @media (min-width: 700px) {
     position: fixed;
     width: 220px;
-    height: calc(100% -64px);
-    overflow-y: scroll;
+    height: 100%;
   }
 `;
 
@@ -26,18 +27,20 @@ const NavList = styled.ul`
 
   a {
     text-decoration: none;
-    // font-weight: bold;
-    // font-size: 1.1em;
     color: #333;
-  }
 
-  a:visied {
-    color: #333;
-  }
+    span {
+      margin-right: 0.5em;
+    }
 
-  a:hover,
-  a:focus {
-    color: #0077cc;
+    &:visited {
+      color: #333;
+    }
+
+    &:hover,
+    &:focus {
+      color: #0077cc;
+    }
   }
 `;
 
@@ -64,17 +67,14 @@ function Navigation() {
         <li>
           <Link to='/favorites'>
             <span aria-hidden='true' role='img'>
-              ✨
+              ❤️
             </span>
             Favorites
           </Link>
         </li>
         <li>
-          <Link to='/new'>
-            <span aria-hidden='true' role='img'>
-              ➕
-            </span>
-            New
+          <Link to='/new' className='new'>
+            <Button small>Create New</Button>
           </Link>
         </li>
       </NavList>
